@@ -1,0 +1,63 @@
+@import "@flaticon/flaticon-uicons/css/all/all";
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;
+
+.titanium {
+    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+	width: 100%;
+  }
+  
+:root {
+    view-transition-name: none;
+}
+
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+    animation-duration: 1s;
+}
+
+@font-face {
+    font-family: 'Moon';
+    src: url("/fonts/Moon2.0-Regular.otf") format("opentype");
+}
+
+.moon-font {
+	font-family: 'Moon'
+}
+
+.base-font {
+	color: var(--heading-color);
+	font-weight: 700;
+	font-size: 1rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	text-decoration: none;
+}
+
+.base-font-small {
+	color: var(--heading-color);
+	font-weight: 700;
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	text-decoration: none;
+}
+
+.base-font-normalcase {
+	color: var(--heading-color);
+	font-weight: 700;
+	font-size: 1rem;
+	letter-spacing: 0.1em;
+	text-decoration: none;
+}
+
+.base-font-button {
+	color: white;
+	font-weight: 700;
+	font-size: 1rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	text-decoration: none;
+}

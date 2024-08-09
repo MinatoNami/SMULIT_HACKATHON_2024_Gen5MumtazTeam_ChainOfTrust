@@ -4,6 +4,7 @@
 	import LoggedOut from "../components/LoggedOut.svelte";
 	import { auth } from "../stores/auth";
 	import { onMount } from "svelte";
+	// @ts-ignore
 	import { onNavigate } from '$app/navigation'
 	import { page } from '$app/stores';
 
@@ -11,6 +12,8 @@
 	  $auth.init();
 	});
 
+    import '../app.css'
+	// @ts-ignore
 	onNavigate((navigation) => {
 		// @ts-ignore
 		if (!document.startViewTransition) return
@@ -18,6 +21,7 @@
 		return new Promise((resolve) => {
 			// @ts-ignore
 			document.startViewTransition(async () => {
+				// @ts-ignore
 				resolve()
 				await navigation.complete
 			})
