@@ -1,19 +1,45 @@
 <script lang="ts">
-	import Header from '$lib/header/Header.svelte';
-  import ChatMessage from '../../components/ChatMessage.svelte';
-  import ChatInput from '../../components/ChatInput.svelte';
+import Header from '$lib/header/Header.svelte';
+import ChatMessage from '../../components/ChatMessage.svelte';
+import ChatInput from '../../components/ChatInput.svelte';
+import OpenAI from 'openai';
 
-  let messages = [
-    { text: "Hello! How can I assist you today?", sender: "bot" }
-  ];
-  
+let prompt = '';
+let response = '';
+let messages:any= [
+  { role: "assistant" , content: "Hello! How can I assist you today?"}
+];
 
-  function sendMessage(text:any) {
-    messages = [...messages, { text: text.detail, sender: "user" }];
-    setTimeout(() => {
-      messages = [...messages, { text: "Let me think...", sender: "bot" }];
-    }, 1000);
+const apiKey = ""
+const openai = new OpenAI(
+  {
+    apiKey: apiKey,
+    dangerouslyAllowBrowser: true 
   }
+);
+
+async function sendMessage(input:any) {
+  prompt = input.detail;
+  if (prompt.trim() === '') return;
+  messages = [...messages, { role: "user" , content: prompt }];
+  try {
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4", // or "gpt-3.5-turbo"
+      messages: [{ role: "system", content: "You are a helpful assistant." }, ...messages],
+    });
+    response = completion.choices[0].message.content || 'No response';
+  } catch (error:any) {
+    console.log("error", error);
+    response = 'An error occurred: ' + error.message;
+  }
+  // Log prompt and response
+  logPromptResponse(prompt, response);
+  messages = [...messages, { role: "assistant", content: response}];
+}
+
+function logPromptResponse(prompt:any, response:any) {
+  // INSERT FUNCTION TO LOG PROMPT AND RESPONSE
+}
 </script>
 
 <Header/>
@@ -35,7 +61,7 @@
     flex-direction: column;
     height: 100vh;
     width: 80vw;
-    padding: 0px 32px 0px 32px;
+    /* padding: 0px 32px 0px 32px; */
     border: 1px solid #e0e0e0;
     border-radius: 10px;
     background-color: #fff;
@@ -54,12 +80,14 @@
     padding: 10px;
     border-top: 1px solid #e0e0e0;
     background-color: #fafafa;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
 </style>
 
 <div class="chat-container">
   <div class="chat-history">
-    {#each messages as message (message.text)}
+    {#each messages as message, index (index)}
       <ChatMessage {message} />
     {/each}
   </div>

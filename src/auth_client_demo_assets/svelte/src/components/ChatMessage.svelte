@@ -24,6 +24,6 @@
   }
 </style>
 
-<div class="message {message.sender}">
-  {message.text}
+<div class="message {message.role}">
+  {message.content}
 </div>
