@@ -3,6 +3,10 @@ import Header from '$lib/header/Header.svelte';
 import ChatMessage from '../../components/ChatMessage.svelte';
 import ChatInput from '../../components/ChatInput.svelte';
 import OpenAI from 'openai';
+import { createActor, canisterId } from "../../../../../declarations/counter";
+
+let data = []
+let actor = createActor(canisterId);
 
 let prompt = '';
 let response = '';
@@ -11,6 +15,14 @@ let messages:any= [
 ];
 
 let apiKey = ""
+
+const append = async (val) => {
+  try {
+      await actor.append(val);
+  } catch (err) {
+      console.error(err)
+  }
+}
 
 async function sendMessage(input:any) {
   const openai = new OpenAI(
@@ -35,10 +47,13 @@ async function sendMessage(input:any) {
   // Log prompt and response
   logPromptResponse(prompt, response);
   messages = [...messages, { role: "assistant", content: response}];
+  
 }
 
 function logPromptResponse(prompt:any, response:any) {
   // INSERT FUNCTION TO LOG PROMPT AND RESPONSE
+  append((Date.now()).toString() + '_' + prompt + '_' + 'user')
+  append((Date.now()).toString() + '_' + response + '_' + 'gpt-4')
 }
 </script>
 <style>
