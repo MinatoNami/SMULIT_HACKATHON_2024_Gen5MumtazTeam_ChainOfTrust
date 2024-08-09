@@ -1,14 +1,7 @@
 <script>
 	import { fly } from 'svelte/transition';
-	import Header from '$lib/header/Header.svelte';
 </script>
 
-<Header/>
-<div style:--widget="loginout" class="icon-container">
-  <a href='/' class="icon">
-    <i class="fi fi-ss-sign-out-alt"></i>
-  </a>
-</div>
 
 <section class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl 2xl:text-7xl">
   <div>
@@ -19,11 +12,31 @@
     </div>
     <div in:fly="{{ x:125, duration: 1250, delay: 750}}" class="padded">
       <span class="moon-font text-3xl md:text-7xl">
-        Project Gen AI
+        ICPHub's Gen AI
       </span>
     </div>
     <div style="padding-top:20px;">
       <hr class="h-0.5">
+    </div>
+    <div class='authors'>
+      <span in:fly="{{ x:125, duration: 1250, delay: 800}}">
+        By:
+      </span>
+      <span in:fly="{{ x:125, duration: 1250, delay: 850}}">
+        Chong Cheng Yang Lionel
+      </span>
+      <span in:fly="{{ x:125, duration: 1250, delay: 900}}">
+        Mellisa Eveline Rahardjo
+      </span>
+      <span in:fly="{{ x:125, duration: 1250, delay: 950}}">
+        Mumtaz Binte Abdul Halim
+      </span>
+      <span in:fly="{{ x:125, duration: 1250, delay: 1000}}">
+        Nafees Abdul Kader
+      </span>
+      <span in:fly="{{ x:125, duration: 1250, delay: 1050}}">
+        Ng Yujin Benjamin
+      </span>
     </div>
   </div>
 </section>
@@ -54,6 +67,7 @@
 		animation-delay: 1.1s;
 		animation-fill-mode: both;
 		border-top: 2px solid #8c8b8b;
+    border-left: 0px;
     /* max-width: 700px; */
 	}
 
@@ -61,33 +75,13 @@
 		padding-bottom: 1rem;
 	}
 
-.icon-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  border: 0px;
-  
-  padding: 3.5rem 2.5rem 0rem 0rem;
-  /* max-width: 365px; */
-  /* min-width: 300px; */
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-
-  view-transition-name: var(--widget);
-}
-
-.icon {
+  .authors {
+    float: left;
+    margin: 30px;
     display: flex;
-    align-self: flex-end;
-    margin: -10px 0px 10px 0px;
-    text-decoration:none; 
-    color:inherit;
-    width: 20px;
+    align-items: flex-start;
+    gap: 10px;
+    width: 550px;
   }
-	a {
-		margin: 25px 20px;
-		width: 10%;
-		min-width:55px;
-	}
+
 </style>
