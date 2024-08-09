@@ -10,15 +10,16 @@ let messages:any= [
   { role: "assistant" , content: "Hello! How can I assist you today?"}
 ];
 
-const apiKey = ""
-const openai = new OpenAI(
+let apiKey = ""
+
+
+async function sendMessage(input:any) {
+  const openai = new OpenAI(
   {
     apiKey: apiKey,
     dangerouslyAllowBrowser: true 
-  }
-);
-
-async function sendMessage(input:any) {
+  });
+  if (!apiKey) return
   prompt = input.detail;
   if (prompt.trim() === '') return;
   messages = [...messages, { role: "user" , content: prompt }];
@@ -59,7 +60,7 @@ function logPromptResponse(prompt:any, response:any) {
   .chat-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 80vh;
     width: 80vw;
     /* padding: 0px 32px 0px 32px; */
     border: 1px solid #e0e0e0;
@@ -94,4 +95,8 @@ function logPromptResponse(prompt:any, response:any) {
   <div class="chat-input-container">
     <ChatInput on:sendMessage={sendMessage} />
   </div>
+  <div style="padding:10px;">
+    <input bind:value={apiKey} type="text" placeholder="Key in OpenAPI API key" style="width:80%">
+  </div>
+  
 </div>
