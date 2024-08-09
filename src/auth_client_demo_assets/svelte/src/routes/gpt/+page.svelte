@@ -57,15 +57,17 @@ function logPromptResponse(prompt:any, response:any) {
     background-color: #f7f7f7;
   }
 
-  .chat-container {
+   .chat-container {
     display: flex;
     flex-direction: column;
     height: 80vh;
     width: 80vw;
-    /* padding: 0px 32px 0px 32px; */
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    background-color: #fff;
+    max-width: 1200px;
+    margin: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .chat-history {
@@ -74,29 +76,45 @@ function logPromptResponse(prompt:any, response:any) {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .chat-history::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .chat-history::-webkit-scrollbar-thumb {
+    background-color: #ced4da;
+    border-radius: 4px;
+  }
+
+  .chat-history::-webkit-scrollbar-thumb:hover {
+    background-color: #adb5bd;
   }
 
   .chat-input-container {
-    padding: 10px;
-    border-top: 1px solid #e0e0e0;
-    background-color: #fafafa;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    padding: 15px;
+    border-top: 1px solid #dee2e6;
+    background-color: #ffffff;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
   }
 </style>
 
-<div class="chat-container">
+<div class="chat-container rounded-xl">
   <div class="chat-history">
     {#each messages as message, index (index)}
       <ChatMessage {message} />
     {/each}
   </div>
-  <div class="chat-input-container">
+  <div class="chat-input-container rounded-b-xl">
     <ChatInput on:sendMessage={sendMessage} />
-  </div>
-  <div style="padding:10px;">
-    <input bind:value={apiKey} type="text" placeholder="Key in OpenAPI API key" style="width:80%">
+    <div class="flex p-3 align-middle">
+      <input bind:value={apiKey} class="align-middle" type="text" placeholder="Key in your OpenAPI API key" style="width:80%">
+    </div>
   </div>
   
 </div>
