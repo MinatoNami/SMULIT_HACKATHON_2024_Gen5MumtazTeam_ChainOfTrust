@@ -1,17 +1,16 @@
 <script>
+    import '$lib/app.css'
 	import Header from '$lib/header/Header.svelte';
 	import LoggedOut from "../components/LoggedOut.svelte";
 	import { auth } from "../stores/auth";
 	import { onMount } from "svelte";
 	import { onNavigate } from '$app/navigation'
 	import { page } from '$app/stores';
-	$page.url.pathname  
 
 	onMount(() => {
 	  $auth.init();
 	});
 
-    import '../app.css'
 	onNavigate((navigation) => {
 		// @ts-ignore
 		if (!document.startViewTransition) return
