@@ -12,7 +12,6 @@ let messages:any= [
 
 let apiKey = ""
 
-
 async function sendMessage(input:any) {
   const openai = new OpenAI(
   {
@@ -42,14 +41,6 @@ function logPromptResponse(prompt:any, response:any) {
   // INSERT FUNCTION TO LOG PROMPT AND RESPONSE
 }
 </script>
-
-<Header/>
-<div style:--widget="loginout" class="icon-container">
-  <a href='/' class="icon">
-    <i class="fi fi-ss-sign-out-alt"></i>
-  </a>
-</div>
-
 <style>
   :global(body) {
     margin: 0;
@@ -68,6 +59,7 @@ function logPromptResponse(prompt:any, response:any) {
     border-radius: 8px;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 70px;
   }
 
   .chat-history {
