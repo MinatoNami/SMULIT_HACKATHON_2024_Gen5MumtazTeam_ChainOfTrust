@@ -1,11 +1,11 @@
 <script>
     import { goto } from "$app/navigation";
     import { auth } from "../stores/auth";
-    let principal = "";
-    $auth.whoamiActor?.whoami().then((p) => {
-      principal = p.toString();
-      principal = principal.substring(0,30) + '.......';
-    });
+    // let principal = "";
+    // $auth.whoamiActor?.whoami().then((p) => {
+    //   principal = p.toString();
+    //   principal = principal.substring(0,30) + '.......';
+    // });
 </script>
 
 <div id='transition' style:--widget="loginout"  class="container">
