@@ -1,31 +1,39 @@
 <script>
 	import { page } from '$app/stores';
+
 </script>
 
-<div class="navbar bg-base-100">
-	<a class="btn btn-ghost text-xl">daisyUI</a>
-  </div>
 <header>
-	<div class="hidden sm:block">
+	<div>
 		<nav>
 			<ul>
-				<li class:active={$page.url.pathname === '/'}><a href="/"><div class="base-font">Home</div></a></li>
-				<li class:active={$page.url.pathname === '/about'}>
-					<a href="/about"><div class="base-font">About</div></a>
+				<li class:active={$page.url.pathname === '/home'}>
+					<a href="/home">
+						<div class="moon-font">Home</div>
+					</a>
 				</li>
-				<li class:active={$page.url.pathname === '/contact'}>
-					<a href="/contact">Contact</a>
+				<li class:active={$page.url.pathname === '/gpt'}>
+					<a href="/gpt">
+						<div class="moon-font">GPT</div>
+					</a>
+				</li>
+				<li class:active={$page.url.pathname === '/logging'}>
+					<a href="/logging">
+						<div class="moon-font">Logging</div>
+					</a>
 				</li>
 			</ul>
 		</nav>
+		<hr class="h-0.5">
 	</div>
 	
 </header>
 
 <style>
 	header {
+		padding-top: 20px;
+		margin: auto;
 		display: flex;
-		justify-content: space-between;
 	}
 
 	nav {
@@ -80,5 +88,10 @@
 
 	a:hover {
 		color: var(--accent-color);
+	}
+
+	hr {
+		margin: 0px;
+		border-left: 0px;
 	}
 </style>
